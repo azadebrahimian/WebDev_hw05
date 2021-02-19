@@ -148,7 +148,6 @@ function Bulls() {
       <div className="Ending-screen">
         <div>You won!</div>
         <button className="Ending-button" onClick={startNewGame}>Play again?</button>
-        <img src="/default dance.gif" alt="default" id="Default-dance" />
       </div>
     );
   }
