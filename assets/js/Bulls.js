@@ -1,6 +1,5 @@
-// import "./App.css";
 import React, { useState, useEffect } from 'react';
-import { ch_join, ch_begin, ch_enter, ch_push, ch_reset } from './socket';
+import { ch_join, ch_push, ch_reset } from './socket';
 
 function Bulls() {
   const [state, setState] = useState({
@@ -11,7 +10,7 @@ function Bulls() {
   });
   const [guess, setGuess] = useState("");
 
-  let { gameStarted, secretCode, history, guesses, invalidGuess, won } = state;
+  let { history, guesses, invalidGuess, won } = state;
 
   useEffect(() => {
     ch_join(setState);
@@ -60,10 +59,6 @@ function Bulls() {
     setGuess("");
   }
 
-  function begin() {
-    ch_begin();
-  }
-
   if (won) {
     return (
       <div className="Ending-screen">
@@ -84,7 +79,6 @@ function Bulls() {
 
   return (
     <div className="Game">
-      <div>{secretCode}</div>
       <div id="History">
         <table id="History-table">
           <thead>
