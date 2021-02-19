@@ -4,8 +4,6 @@ import { ch_join, ch_begin, ch_enter, ch_push, ch_reset } from './socket';
 
 function Bulls() {
   const [state, setState] = useState({
-    // gameStarted: false,
-    // guess: "",
     history: [],
     guesses: 0,
     invalidGuess: false,
@@ -20,71 +18,16 @@ function Bulls() {
   });
 
   function checkIfNumber(e) {
-    // ch_enter({ letter: e });
     if (isNaN(e)) {
       return
     } else {
       setGuess(e);
-      // setState({
-      //   ...state,
-      //   guess: e
-      // });
     }
   }
-
-  // function checkForBullsAndCows() {
-  //   let b = 0;
-  //   let c = 0;
-  //   let secretDigit;
-  //   let index;
-  //   for (let i = 0; i < 4; i++) {
-  //     secretDigit = secretCode[i];
-  //     index = guess.indexOf(secretDigit);
-  //     if (secretDigit === parseInt(guess[i])) {
-  //       b++;
-  //     }
-  //     if (index >= 0 && index !== i) {
-  //       c++;
-  //     }
-  //   }
-
-  //   return [b, c];
-  // }
 
   function guessCode() {
     ch_push({ letter: guess });
     setGuess("");
-    // let state1;
-    // if (guess.length !== 4 || !checkIfUnique(guess)) {
-    //   setState({
-    //     ...state,
-    //     invalidGuess: true
-    //   });
-    //   return
-    // } else {
-    //   state1 = false;
-    // }
-
-    // let state2;
-    // var bullsAndCows = checkForBullsAndCows();
-    // if (bullsAndCows[0] === 4) {
-    //   state2 = true;
-    // } else {
-    //   state2 = false;
-    // }
-
-    // var currHistory = history;
-    // currHistory.push({ guess: guess, bulls: bullsAndCows[0], cows: bullsAndCows[1] });
-    // var currGuesses = guesses;
-    // currGuesses++;
-    // setState({
-    //   ...state,
-    //   invalidGuess: state1,
-    //   won: state2,
-    //   guess: "",
-    //   history: currHistory,
-    //   guesses: currGuesses
-    // });
   }
 
   function printHistory() {
@@ -115,33 +58,11 @@ function Bulls() {
   function startNewGame() {
     ch_reset();
     setGuess("");
-    // setState({
-    //   ...state,
-    //   secretCode: createSecretCode(),
-    //   history: [],
-    //   guesses: 0,
-    //   won: false
-    // });
   }
 
   function begin() {
     ch_begin();
-    // setState({
-    //   ...state,
-    //   gameStarted: true
-    // });
   }
-
-  // if (!gameStarted) {
-  //   return (
-  //     <div className="Start-menu">
-  //       <h2 id="Start-title">Bulls and Cows</h2>
-  //       <button id="Start-button" onClick={begin}>
-  //         Start Game!
-  //       </button>
-  //     </div>
-  //   );
-  // }
 
   if (won) {
     return (
